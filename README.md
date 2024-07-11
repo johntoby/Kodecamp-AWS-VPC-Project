@@ -5,7 +5,7 @@ This project was designed to test my understanding of AWS VPC Networking. I will
 
 This is the Architecture diagram of the network I will be creating: 
 
-![ARCHITECTURE DIAGRAM]() 
+![ARCHITECTURE DIAGRAM](Untitled-2024-07-11-0903.png) 
 
 
 
