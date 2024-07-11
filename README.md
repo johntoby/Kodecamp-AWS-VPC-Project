@@ -40,6 +40,73 @@ My two subnets are now created, and I am ready for further configurations
 
 
 ## Internet Gateway 
-An Internet Gateway is a means of providing direct access to the internet. 
+An Internet Gateway is a means of providing direct access to the internet. The internet gateway is created named KC-IGW, and attached to KCVPC. 
+
+
+![creating the internet gateway](https://github.com/user-attachments/assets/320986d6-f46f-4b8c-b3a6-0f3c95d8df1d)
+
+<br>
+
+
+![internet gateway attached to KCVPC](https://github.com/user-attachments/assets/ce27ac30-d037-4dcd-9b5d-8ca4926e5fa5) 
+
+
+## ROUTE TABLES 
+A route table specifies the path that will be taken by traffic within the subnet. Thus, 2 route tables will be created to handle both private/internal traffic and public traffic. 
+
+The first Route table that will be created is the PublicRouteTable, attached to KCVPC. After creation, it will be associated with the Public Subnet under subnet associations. Also, a another route will be created that will route all traffic from 0.0.0.0/32 to the KCIGW. 
+
+![private route table](https://github.com/user-attachments/assets/943a3b96-6819-4130-9930-aed049e60165) 
+
+
+<br> 
+
+The second Route table is the PrivateRouteTable, also attached to KCVPC and associated with the Private Subnet. 
+
+
+![private route table](https://github.com/user-attachments/assets/e086c3f3-f3a6-4467-94fa-e21f940b00b8) 
+
+<br> 
+
+## NAT GATEWAY 
+A NAT Gateway will be created in the Public Subnet, named KC-NATGW. The purpose of the NAT Gateway is to create a means for the Private subnet to access the internet. After creating the NAT Gateway, I will update the route table for my PrivateRouteTable to route traffic from 0.0.0.0 to the KC-NATGW. 
+
+
+![NAT Gateway](https://github.com/user-attachments/assets/b1af4b8f-3cb5-4de1-807c-3b1588062080) 
+
+<br> 
+
+## SECURITY GROUPS 
+Security groups are the firewalls for the VPC, filtering traffic based on allow/deny rules. AWS comes with 2 implicit rules - Default Allow all egress traffic, and default Deny all ingress traffic. Thus, I will be creating a security group for my public subnet called KC-PUBLICSG that allows ingress traffic into the network via ports 80 (HTTP) and 443 (HTTPS) from anywhere, while port 22 (SSH) traffic will only be allowed from my IP address only. 
+
+![KC PUBLIC SG](https://github.com/user-attachments/assets/e68dedb3-8cc5-4a0a-9e3b-eb4a32c9fdb3)
+
+<br>
+
+
+The second Security Group to be created is named KC-PRIVATE-SG, which will allow only ingress traffic into port 3306 (MySQL) from the Public Subnet, and allowing all egress traffic. 
+
+
+![KC PRIVATE SG](https://github.com/user-attachments/assets/c0730d05-c614-4358-b3c7-67db87c15032)
+
+
+<br> 
+
+## NETWORK ACCESS CONTROL LISTS (NACLs) 
+NACLs are an extra layer of security across the network. I will be creating 2 NACLs for each subnet. 
+
+The first NACL is the KC-Public-NACL, associated with the Public Subnet. This will allow All Outbound traffic, and only allow Inbound traffic from Port 22(SSH), port 80 (HTTP) and port 443 (HTTPS). 
+
+![kc public nacl](https://github.com/user-attachments/assets/1085d27f-9643-450c-b456-460d663b1266)
+
+
+<br> 
+
+The second NACL is the KC-Private-NACL associated with the Private Subnet. This will allow Inbound traffic only from the Public Subnet (10.0.1.0/24), and only allow Outbound traffic to the public subnet (10.0.1.0/24) and the internet. 
+
+![KC PRIVATE NACL](https://github.com/user-attachments/assets/648fa738-88b7-4da0-bb41-5e2bf6946691)
+
+<br>
+
 
 
