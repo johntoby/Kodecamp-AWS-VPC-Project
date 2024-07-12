@@ -109,4 +109,20 @@ The second NACL is the KC-Private-NACL associated with the Private Subnet. This 
 <br>
 
 
+## LAUNCH INSTANCE 
+
+After configuring all the VPC and network settings, it is time to deploy my ec2 instance. 2 instances will be deployed - one for my nginx Webserver and the other for my MySQL Database server. 
+
+The Webserver instance will use Ubuntu 22.04 image, with t2.micro instance type, created in my KCVPC and PublicSubnet, using KC-Public-SG. A new keypair will be created for this server called KC-WEBSERVER-KEYPAIR. This instance has complete access to the internet. 
+
+![WEBSERVER instance](https://github.com/user-attachments/assets/606b3a7d-7c3c-4993-ab40-65989974629b)
+
+<br>
+
+
+The Database server will be created also using an Ubuntu 22.04 image, with t2.micro instance type, created in KCVPC, PrivateSubnet, using KC-Private-SG. A new keypair will be created for this server called KC-DATABASESERVER-KEYPAIR. This instance can only access the internet via the NAT Gateway, and can also access the Webserver instance
+
+![DATABASE SERVER INSTANCE](https://github.com/user-attachments/assets/365d5980-4f55-47a5-bf33-00ff1d90ed2b)
+
+
 
