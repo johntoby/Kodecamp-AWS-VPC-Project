@@ -122,7 +122,8 @@ The Webserver instance will use Ubuntu 22.04 image, with t2.micro instance type,
 
 The Database server will be created also using an Ubuntu 22.04 image, with t2.micro instance type, created in KCVPC, PrivateSubnet, using KC-Private-SG. A new keypair will be created for this server called KC-DATABASESERVER-KEYPAIR. This instance can only access the internet via the NAT Gateway, and can also access the Webserver instance
 
-![DATABASE SERVER INSTANCE](https://github.com/user-attachments/assets/365d5980-4f55-47a5-bf33-00ff1d90ed2b)
+![DATABASE SERVER INSTANCE](https://github.com/user-attachments/assets/06ff2823-a3ea-4ecc-bf44-fa1f090bc48f)
+
 
 <br> 
 
