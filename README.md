@@ -124,5 +124,9 @@ The Database server will be created also using an Ubuntu 22.04 image, with t2.mi
 
 ![DATABASE SERVER INSTANCE](https://github.com/user-attachments/assets/365d5980-4f55-47a5-bf33-00ff1d90ed2b)
 
+<br> 
+
+End of Project. 
+
 
 
